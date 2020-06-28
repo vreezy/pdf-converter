@@ -34,8 +34,12 @@ function App() {
             base64Content: base64
          };
          // convert
+         console.log("Request: ", pdfRequest);
+         console.log("base64string length: ", pdfRequest.base64Content.length);
+         console.time('PDF-Convert');
          const pdfResponse: IPDFResponse = await Service.convertToPDF(pdfRequest);
-         console.log(pdfResponse);
+         console.timeEnd('PDF-Convert');
+         console.log("Response:" , pdfResponse);
          // return
          setPdfResponse(pdfResponse);
       }
