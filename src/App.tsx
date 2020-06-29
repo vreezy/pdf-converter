@@ -7,6 +7,7 @@ import { Service, IPDFResponse, IPDFRequest } from './service';
 import readFileAsync from './readFileAsync';
 import * as base64Arraybuffer from 'base64-arraybuffer';
 import { getGUID } from "@pnp/common";
+import { getExtension } from './getExtension';
 
 import { 
    PrimaryButton
@@ -30,13 +31,12 @@ function App() {
          const base64 = base64Arraybuffer.encode(arrayBuffer);
          // original filename not relevant. flow can't handle random strings, so we push a random string from frontend
          const pdfRequest: IPDFRequest = {
-            filename: getGUID() + ".docx", 
+            filename: getGUID() + '.' + getExtension(file.name) || 'docx', 
             base64Content: base64
          };
-         // convert
          console.log("Request: ", pdfRequest);
-         console.log("base64string length: ", pdfRequest.base64Content.length);
          console.time('PDF-Convert');
+         // convert
          const pdfResponse: IPDFResponse = await Service.convertToPDF(pdfRequest);
          console.timeEnd('PDF-Convert');
          console.log("Response:" , pdfResponse);
