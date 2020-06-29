@@ -4,6 +4,7 @@
 ```bash
 git clone ...
 npm install
+( Update ./src/service.tsx -> const url: )
 npm start
 ```
 there is no build because its only for testing.
