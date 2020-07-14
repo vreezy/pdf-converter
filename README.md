@@ -1,12 +1,15 @@
 
 # PDF-Converter
 
+[Documentation (german)](https://www.novacapta.de/details/PDF-Konverter_in_Power_Automate)
+
 ```bash
 git clone ...
 npm install
 ( Update ./src/service.tsx -> const url: )
 npm start
 ```
+
 there is no build because its only for testing.
 
 ## create-react-app original README
